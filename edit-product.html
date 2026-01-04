@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 space-y-5">
+
+    <!-- Heading -->
+    <h2 class="text-2xl font-bold text-gray-800 text-center">
+      Update Product
+    </h2>
+
+        <!-- title -->
+    <div class="space-y-1">
+      <label class="text-sm font-medium text-gray-600">Title</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter price"
+        class="w-full rounded-xl border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <!-- Description -->
+    <div class="space-y-1">
+      <label class="text-sm font-medium text-gray-600">Description</label>
+      <textarea
+        id="description"
+        placeholder="Enter product description"
+        class="w-full h-24 resize-none rounded-xl border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+    </div>
+
+    <!-- Price
+    <div class="space-y-1">
+      <label class="text-sm font-medium text-gray-600">Price</label>
+      <input
+        type="number"
+        id="price"
+        placeholder="Enter price"
+        class="w-full rounded-xl border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div> -->
+
+    <!-- Image Preview -->
+    <div class="space-y-2">
+      <label class="text-sm font-medium text-gray-600">Product Image</label>
+
+      <div class="w-40 h-40 mx-auto rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50">
+        <img
+          id="previewImg"
+          class="w-full h-full object-cover hidden"
+        />
+        <span id="placeholderText" class="text-sm text-gray-400">
+          Image Preview
+        </span>
+      </div>
+
+      <input
+        type="file"
+        id="imgFile"
+        class="w-full text-sm text-gray-600
+               file:mr-3 file:py-2 file:px-4
+               file:rounded-lg file:border-0
+               file:bg-blue-600 file:text-white
+               hover:file:bg-blue-700 cursor-pointer"
+      />
+    </div>
+
+    <!-- Button -->
+    <button
+      id="updateBtn"
+      class="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition duration-300"
+    >
+      Update Product
+    </button>
+
+  </div>
+</div>
+
+
+    <script type="module" src="edit-product.js"></script>
+
+</body>
+
+</html>
