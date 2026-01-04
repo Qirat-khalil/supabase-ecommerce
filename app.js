@@ -270,8 +270,8 @@ async function showUserProfile() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    if (profileNameEl) profileNameEl.textContent = user.user_metadata?.name || "User";
-    if (profileImgEl) profileImgEl.src = user.user_metadata?.profile_url || "https://i.pravatar.cc/100";
+    if (profileNameEl) profileNameEl.textContent = user.user_metadata?.name
+    if (profileImgEl) profileImgEl.src = user.user_metadata?.profile_url
 }
 
 // Call on page load
