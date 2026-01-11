@@ -34,31 +34,45 @@ async function fetchSingleProduct() {
 let isOwner = user && data.user_id === user.id;
 
 prodcard.innerHTML = `
-<div class="bg-white rounded-3xl shadow-xl overflow-hidden max-w-xl mx-auto mt-10">
+<div class="relative bg-white/70 backdrop-blur-2xl rounded-[2.8rem] shadow-[0_30px_80px_rgba(0,0,0,0.15)] overflow-hidden max-w-3xl mx-auto mt-14 border border-white/60">
 
     <!-- HERO IMAGE -->
-    <div class="relative w-full h-[260px] bg-gray-100">
-        <img src="${data.postimgUrl}" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+    <div class="relative w-full h-[340px] overflow-hidden group">
+        <img src="${data.postimgUrl}" 
+             class="w-full h-full object-cover scale-110 group-hover:scale-125 transition duration-[1200ms] ease-out">
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+
+        <!-- Floating badge -->
+        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full text-xs tracking-wide font-bold shadow-lg">
+            ✨ Featured Story
+        </div>
+
+        <!-- Soft glow -->
+        <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[120%] h-40 bg-gradient-to-t from-white via-white/40 to-transparent"></div>
     </div>
 
-    <div class="p-8">
+    <div class="relative p-8 md:p-12">
 
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-5">
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
             ${data.titlepost}
         </h2>
 
-        <p class="text-gray-700 text-lg whitespace-pre-line mb-10">
+        <!-- Description -->
+        <p class="text-gray-700 text-lg leading-[1.85] whitespace-pre-line mb-14">
             ${data.postdes}
         </p>
 
-        <div class="flex justify-between items-center border-t pt-6">
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 border-t border-gray-200/60 pt-6">
 
-            <div class="flex gap-8 text-gray-600">
-                <button class="flex items-center gap-2 hover:text-red-500">
+            <div class="flex gap-8 text-gray-500 font-semibold">
+                <button class="flex items-center gap-2 hover:text-red-500 transition-all hover:scale-105">
                     <i class="fa-regular fa-heart text-xl"></i> Like
                 </button>
-                <button class="flex items-center gap-2 hover:text-indigo-500">
+                <button class="flex items-center gap-2 hover:text-indigo-500 transition-all hover:scale-105">
                     <i class="fa-regular fa-comment text-xl"></i> Comment
                 </button>
             </div>
@@ -66,16 +80,21 @@ prodcard.innerHTML = `
             <!-- OWNER ONLY -->
             ${isOwner ? `
             <div class="flex gap-3">
-                <button class="editBtn bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-2 rounded-full">
+                <button class="editBtn bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-500 text-white px-7 py-2.5 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-110 transition">
                     Edit
                 </button>
-                <button class="deltBtn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full">
+                <button class="deltBtn bg-gradient-to-r from-red-500 via-rose-500 to-pink-600 text-white px-7 py-2.5 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-110 transition">
                     Delete
                 </button>
             </div>
             ` : ""}
         </div>
     </div>
+
+    <!-- Decorative blur blobs -->
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-400/20 rounded-full blur-3xl"></div>
+
 </div>
 `;
 
