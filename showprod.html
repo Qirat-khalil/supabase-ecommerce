@@ -19,20 +19,65 @@
   <!-- Navbar -->
   <!-- Navbar -->
 <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+  <div class="max-w-7xl mx-auto px-4 py-3">
 
-    <!-- Left: Logo -->
-    <div class="flex items-center gap-2">
-      <div class="w-9 h-9 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold">
-        P
+    <!-- TOP BAR -->
+    <div class="flex items-center justify-between gap-3">
+
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold">
+          P
+        </div>
+        <h1 class="text-xl font-bold text-gray-800 hidden sm:block">
+          PostApp
+        </h1>
       </div>
-      <h1 class="text-xl font-bold text-gray-800 hidden sm:block">
-        PostApp
-      </h1>
+
+      <!-- Center: Search (Desktop) -->
+      <div class="hidden md:block flex-1 max-w-md">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            placeholder="Search posts..."
+            class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="flex items-center gap-3">
+
+        <!-- Search icon (mobile) -->
+        <button id="searchBtn" class="md:hidden text-gray-700 text-lg">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Create Post (desktop) -->
+        <a href="addpost.html"
+          class="hidden sm:flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full
+                 hover:bg-indigo-700 transition">
+          <i class="fa-solid fa-plus"></i>
+          <span>Create</span>
+        </a>
+
+        <!-- Profile -->
+        <div class="w-9 h-9 rounded-full bg-gray-300 overflow-hidden cursor-pointer" id="profimg">
+          <img src="" id="profileImg" alt="profile" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Mobile Menu Btn -->
+        <button id="menuBtn" class="md:hidden text-xl text-gray-700">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
     </div>
 
-    <!-- Center: Search -->
-    <div class="hidden md:block flex-1 max-w-md">
+    <!-- MOBILE SEARCH -->
+    <div id="mobileSearch" class="hidden mt-3 md:hidden">
       <div class="relative">
         <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
         <input
@@ -44,33 +89,23 @@
       </div>
     </div>
 
-    <!-- Right: Actions -->
-    <div class="flex items-center gap-3">
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden mt-4 border-t pt-4 space-y-3">
 
-      <!-- Create Post -->
       <a href="addpost.html"
-        class="hidden sm:flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full
+        class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-xl
                hover:bg-indigo-700 transition">
         <i class="fa-solid fa-plus"></i>
-        <span>Create</span>
-    </a>
+        <span>Create Post</span>
+      </a>
 
-      <!-- Profile -->
-      <div class="w-9 h-9 rounded-full bg-gray-300 overflow-hidden cursor-pointer " id="profimg">
-        <img
-          src=""
-          id="profileImg"
-          alt="profile"
-          class="w-full h-full object-cover"
-        />
-      </div>
-
-      <!-- Mobile Menu -->
-      <button class="md:hidden text-xl text-gray-700">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <!-- <button class="w-full flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-xl">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </button> -->
 
     </div>
+
   </div>
 </nav>
 
@@ -82,15 +117,26 @@
 <!-- <div id="checkoutForm" ></div> -->
      
   <!-- JS -->
-  <script>
-    
-    // const menuBtn = document.getElementById("menuBtn");
-    // const mobileMenu = document.getElementById("mobileMenu");
 
-    // menuBtn.addEventListener("click", () => {
-    //   mobileMenu.classList.toggle("hidden");
-    // });
-  </script>
+    
+  <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const searchBtn = document.getElementById("searchBtn");
+  const mobileSearch = document.getElementById("mobileSearch");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    mobileSearch.classList.add("hidden");
+  });
+
+  searchBtn.addEventListener("click", () => {
+    mobileSearch.classList.toggle("hidden");
+    mobileMenu.classList.add("hidden");
+  });
+</script>
+
+
 
   <script type="module" src="showprod.js"></script>
   <script type="module" src="app.js"></script>

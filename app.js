@@ -99,7 +99,7 @@ loginBtn?.addEventListener("click", async (e) => {
 });
 
 // -------------------------- LOGOUT --------------------------
-const logoutBtn = document.getElementById("logBtn");
+const logoutBtn = document.getElementById("logoutBtn");
 
 logoutBtn?.addEventListener("click", async (e) => {
     e.preventDefault();
