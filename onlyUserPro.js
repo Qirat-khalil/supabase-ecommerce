@@ -34,45 +34,36 @@ async function fetchSingleProduct() {
 let isOwner = user && data.user_id === user.id;
 
 prodcard.innerHTML = `
-<div class="relative bg-white/70 backdrop-blur-2xl rounded-[2.8rem] shadow-[0_30px_80px_rgba(0,0,0,0.15)] overflow-hidden max-w-3xl mx-auto mt-14 border border-white/60">
+<div class="relative bg-white/80 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl overflow-hidden max-w-2xl mx-auto mt-12 border border-gray-100">
 
     <!-- HERO IMAGE -->
-    <div class="relative w-full h-[340px] overflow-hidden group">
-        <img src="${data.postimgUrl}" 
-             class="w-full h-full object-cover scale-110 group-hover:scale-125 transition duration-[1200ms] ease-out">
-        
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+    <div class="relative w-full h-[300px] overflow-hidden">
+        <img src="${data.postimgUrl}" class="w-full h-full object-cover scale-105 hover:scale-110 transition duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
 
-        <!-- Floating badge -->
-        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-xl px-4 py-1.5 rounded-full text-xs tracking-wide font-bold shadow-lg">
-            ✨ Featured Story
+        <!-- Floating badge style -->
+        <div class="absolute bottom-5 left-6 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold shadow">
+            Featured Post
         </div>
-
-        <!-- Soft glow -->
-        <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[120%] h-40 bg-gradient-to-t from-white via-white/40 to-transparent"></div>
     </div>
 
-    <div class="relative p-8 md:p-12">
+    <div class="p-8 md:p-10">
 
-        <!-- Title -->
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-5">
             ${data.titlepost}
         </h2>
 
-        <!-- Description -->
-        <p class="text-gray-700 text-lg leading-[1.85] whitespace-pre-line mb-14">
+        <p class="text-gray-700 text-lg leading-relaxed whitespace-pre-line mb-12">
             ${data.postdes}
         </p>
 
-        <!-- Actions -->
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 border-t border-gray-200/60 pt-6">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 border-t pt-6">
 
-            <div class="flex gap-8 text-gray-500 font-semibold">
-                <button class="flex items-center gap-2 hover:text-red-500 transition-all hover:scale-105">
+            <div class="flex gap-8 text-gray-500 font-medium">
+                <button class="flex items-center gap-2 hover:text-red-500 transition">
                     <i class="fa-regular fa-heart text-xl"></i> Like
                 </button>
-                <button class="flex items-center gap-2 hover:text-indigo-500 transition-all hover:scale-105">
+                <button class="flex items-center gap-2 hover:text-indigo-500 transition">
                     <i class="fa-regular fa-comment text-xl"></i> Comment
                 </button>
             </div>
@@ -80,23 +71,19 @@ prodcard.innerHTML = `
             <!-- OWNER ONLY -->
             ${isOwner ? `
             <div class="flex gap-3">
-                <button class="editBtn bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-500 text-white px-7 py-2.5 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-110 transition">
+                <button class="editBtn bg-gradient-to-r from-yellow-400 to-orange-500 hover:opacity-90 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:scale-105 transition">
                     Edit
                 </button>
-                <button class="deltBtn bg-gradient-to-r from-red-500 via-rose-500 to-pink-600 text-white px-7 py-2.5 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-110 transition">
+                <button class="deltBtn bg-gradient-to-r from-red-500 to-rose-600 hover:opacity-90 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:scale-105 transition">
                     Delete
                 </button>
             </div>
             ` : ""}
         </div>
     </div>
-
-    <!-- Decorative blur blobs -->
-    <div class="absolute -top-24 -right-24 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-400/20 rounded-full blur-3xl"></div>
-
 </div>
 `;
+
 
 
     // ================= DELETE =================
